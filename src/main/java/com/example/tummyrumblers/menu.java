@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class menu {
+    static String banner ="********************************************************";
     public static int menu = 0;
     public static HashMap<Integer,String> menuItems = new HashMap<>();
     public static HashMap<Integer,Double> menuCosts = new HashMap<>();
@@ -32,8 +33,10 @@ public class menu {
             menu = resChoice;
             try{
                 main(new String[0]);
-            } catch (FileNotFoundException EE){
+            } catch (FileNotFoundException EE){}
+            System.out.println(banner);
+            System.out.println("Here is the menu for "+ Businesses.nameBus.get(resChoice) +"."   );
+            System.out.println(banner);
 
-            }
         }
     }

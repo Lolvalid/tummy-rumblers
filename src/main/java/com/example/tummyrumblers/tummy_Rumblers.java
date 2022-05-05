@@ -12,13 +12,11 @@ public class tummy_Rumblers {
     static String[] nope =new String[0];
 
     public static void main(String[] args) {
+        userLogIn.main(new String[0]);
         bootRumbling();
         listOptions();
         int restaurant = customerChoices.selectRestaurant();
         menu.loadMenu(restaurant);
-        System.out.println(banner);
-        System.out.println("Here is the menu for "+ Businesses.nameBus.get(restaurant) +"."   );
-        System.out.println(banner);
         listMenu();
     }
     public static void bootRumbling(){
