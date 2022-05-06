@@ -29,6 +29,10 @@ public class Businesses {
 
             //Splits line into 0/1/2/3 elements
             readingText = readDB.nextLine().split(",");
+            //safety check to prevent empty strings
+            if ( restNum > 2 && readingText[0].equals(""))
+                break;
+
             nameBus.put(restNum,readingText[businessNameLoc]);
             addyBus.put(restNum,readingText[businessAddLoc]);
             phoneBus.put(restNum,readingText[businessPhoneLoc]);

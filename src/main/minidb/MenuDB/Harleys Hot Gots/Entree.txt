@@ -1,0 +1,7 @@
+Butter Chicken, 10.99
+Spicy Vindaloo (Beef),11.99
+Spicy Vindaloo (Goat),12.99
+Tikka Masala,10.99
+Aloo Mattar,9.99
+Dal Makhani,9.99
+Paneer Krahi,11.99

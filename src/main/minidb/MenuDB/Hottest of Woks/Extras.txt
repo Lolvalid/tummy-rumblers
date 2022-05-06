@@ -1,0 +1,7 @@
+Fried Noodles, 1.00
+Fortune Cookies, 0.45
+Almond Cookies, 0.75
+Hot Chili Oil, 0.75
+Rice, 2.65
+Moo Shu Pancakes, 1.50
+

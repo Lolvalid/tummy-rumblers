@@ -1,8 +1,8 @@
-Harleys Hot Gots, 288-155-2254, 1556 Fake St. , Indian
-Johns Johnsons, 457-455-4555, 1502 Fake St. , American
-Gmeng Brisket Boys, 111-222-3333, 15666 Fake St. , BBQ
-Jeffs Joyous Jollys Candies, 555-444-2113, 1533 Fake St. , Sweets and Desert
-Wacky Wings, 152-254-2311, 15040 Fake St. , Wings and BBQ
-Hottest of Woks, 555-452-2145, 15050 Fake St. , Chinese
-Big Ol' Bob's Burgers, 555-457-4521, 15077 Fake St. , American
-name,phone,address,type
+Harleys Hot Gots, 288-155-2254, 1556 Fake St. - Bloomington IL 61752 , Indian
+Johns Johnsons, 457-455-4555, 1502 Fake St. - Bloomington IL 61752, American
+Gmeng Brisket Boys, 111-222-3333, 15666 Fake St. - Bloomington IL 61752 , BBQ
+Jeffs Joyous Jollys Candies, 555-444-2113, 1533 Fake St. - Bloomington IL 61752 , Sweets and Desert
+Wacky Wings, 152-254-2311, 15040 Fake St. - Bloomington IL 61752 , Wings and BBQ
+Hottest of Woks, 555-452-2145, 15050 Fake St. - Bloomington IL 61752 , Chinese
+Big Ol' Bob's Burgers, 555-457-4521, 15077 Fake St. - Bloomington IL 61752 , American
+

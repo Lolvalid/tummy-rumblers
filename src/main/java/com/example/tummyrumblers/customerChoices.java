@@ -1,6 +1,7 @@
 package com.example.tummyrumblers;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class customerChoices {
     static Scanner choice = new Scanner(System.in);
@@ -14,6 +15,7 @@ public class customerChoices {
     public static int selectRestaurant() {
         //prompt to select, loop until valid answer between restaurants available.
         if (count == 0) {
+            System.out.println();
             System.out.print("Please select which restaurant you would like: ");
         }
         try {
@@ -31,5 +33,19 @@ public class customerChoices {
             System.out.println("Please enter a valid response.");
             System.out.println("Closed due to Error.");
         }return restaurantSelected;
+    }
+
+    public static void returnToRestaurant(){
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println();
+        System.out.println(menu.banner);
+        System.out.println("          Returning to Restaurant Menus");
+        System.out.println(menu.banner);
+        tummy_Rumblers.listOptions();
+        menu.loadMenu(customerChoices.selectRestaurant());
     }
 }

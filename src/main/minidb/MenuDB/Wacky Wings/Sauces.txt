@@ -1,0 +1,7 @@
+BBQ,0.50
+Swett BBQ,0.50
+Honey BBQ,0.50
+Mango Jalepeno,0.50
+Buffalo,0.50
+Spicy Garlic,0.50
+Asian Thawck,0.50

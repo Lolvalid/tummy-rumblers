@@ -1,4 +1,0 @@
-testItem, 4.99
-testItem, 4.99
-testItem, 4.99
-testItem, 4.99

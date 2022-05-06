@@ -1,0 +1,6 @@
+8-Piece Wings,5.99
+16-Piece Wings,11.00
+24-Piece Wings,15.99
+Boneless 8-Piece Wings,6.99
+Boneless 16-Piece Wings,13.00
+Boneless 24-Piece Wings,16.99

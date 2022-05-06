@@ -1,0 +1,4 @@
+Curly Fries, 1.50
+Cheeseburger, 2.99
+Double Cheeseburger, 5.99
+Triple Cheeseburger, 7.99

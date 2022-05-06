@@ -1,0 +1,4 @@
+Bacon, 0.75
+Ranch Cups, 0.50
+Grilled Mushrooms,0.50
+Grilled Onions,0.50

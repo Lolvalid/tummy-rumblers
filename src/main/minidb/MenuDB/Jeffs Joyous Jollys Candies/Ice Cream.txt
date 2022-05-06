@@ -1,0 +1,6 @@
+Vanilla, 5.00
+Chocolate, 5.00
+Strawberry, 5.00
+Mint Chocolate Chip, 5.50
+Cookie Dough, 5.50
+Blue Moon, 5.50

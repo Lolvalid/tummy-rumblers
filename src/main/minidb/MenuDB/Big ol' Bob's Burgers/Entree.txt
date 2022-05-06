@@ -1,0 +1,6 @@
+Cheeseburger, 4.50
+Double Cheeseburger, 5.75
+Triple Cheeseburger, 7.50
+Patty Melt,  6.25
+Mushroom and Swiss, 5.50
+Chicago Style Hot Dog, 5.50

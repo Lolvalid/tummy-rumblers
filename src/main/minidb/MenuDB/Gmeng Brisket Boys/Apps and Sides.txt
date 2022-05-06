@@ -1,0 +1,5 @@
+Chili,1.99
+Collard Greens,2.50
+Creamy Mac and Cheese, 3.00
+Fries, 2.00
+Corn Bread, 2.00

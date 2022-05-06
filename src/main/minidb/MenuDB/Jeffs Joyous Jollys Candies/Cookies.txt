@@ -1,0 +1,5 @@
+Berries and Cream,3.50
+Chocolate Chip,2.75
+Thinnest Mint,3.00
+Oatmeal Chocolate Walnut,3.00
+Brownies,3.00

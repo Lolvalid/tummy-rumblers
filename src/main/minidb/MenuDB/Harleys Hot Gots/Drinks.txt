@@ -1,0 +1,8 @@
+Lemonade, 1.50
+Teas, 1.50
+Water,1.00
+Pepsi,1.90
+Mt. Dew, 1.90
+Dr. Pepper, 1.90
+Mango Lassi, 4.00
+Lassi, 3.50
