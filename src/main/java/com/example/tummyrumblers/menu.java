@@ -12,6 +12,10 @@ public class menu {
     public static int name = 0;
     public static HashMap<Integer, String> menuItems = new HashMap<>();
     public static HashMap<Integer, Integer> menuCosts = new HashMap<>();
+    public static HashMap<String, Integer > cartItems = new HashMap<>();
+    public static HashMap<String, Integer> cartCosts = new HashMap<>();
+
+
     public static boolean CUSTOMER_BACK_BUTTON = false;
 
 
@@ -93,7 +97,7 @@ public class menu {
     public static int menuCats(String[] menuOptions){
         Scanner selection = new Scanner(System.in);
         int menuChoice=0;
-        final int CUST_BACK_BUTTON = 999;
+
                 for(int i = 1; i <= menuOptions.length; i++) {
                     if (i == menuOptions.length) {
                         System.out.println("{" + i + "}" + "  " + "Return to Restaurant Selection.");
@@ -106,10 +110,10 @@ public class menu {
         do {
             menuChoice = selection.nextInt();
             CUSTOMER_BACK_BUTTON = false;
-            if (menuChoice > menuOptions.length) {
+            if (menuChoice > menuOptions.length || menuChoice <= 0) {
                 System.out.println("Invalid selection, please try again.");
             }
-        }while (menuChoice > menuOptions.length);
+        }while (menuChoice > menuOptions.length || menuChoice <= 0);
         //if they selected to return to menu, boot backwards into menu
         if (menuChoice == menuOptions.length) {
             CUSTOMER_BACK_BUTTON = true;
@@ -128,6 +132,25 @@ public class menu {
         totalCost = tummy_Rumblers.indent.substring(0, tummy_Rumblers.indent.length() - totalCost.length() - item.length()) + totalCost;
         System.out.println(item + totalCost);
     }
+        Scanner selection = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Please select items to add to your cart: ");
+        do {
+            int menuChoice = selection.nextInt();
+            if (menuChoice > menuItems.size() || menuChoice <= 0 ) {
+                System.out.println("Invalid selection, please try again.");
+
+            }
+
+            String name = menuItems.get(menuChoice);
+            int amount;
+            if (cartItems.get(name) == null){
+                amount = 0;
+            } else { amount = cartItems.get(name);}
+            cartItems.put(menuItems.get(menuChoice),amount + 1);
+            cartCosts.put(menuItems.get(menuChoice), menuCosts.get(menuChoice));
+            System.out.println(menuItems.get(menuChoice) + " added to cart, you have " + cartItems.get(menuItems.get(menuChoice)) + " in cart.");
+        } while (!CUSTOMER_BACK_BUTTON);
 }
 }
 
