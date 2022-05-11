@@ -6,27 +6,30 @@ import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class menu {
     static String banner = "********************************************************";
     private static int name = 0;
     private String menuItem;
     private Integer menuCost;
-//    public static HashMap<Integer, String> menuItems = new HashMap<>();
-//    public static HashMap<Integer, Integer> menuCosts = new HashMap<>();
-//    public static HashMap<String, Integer > cartItems = new HashMap<>();
-//    public static HashMap<String, Integer> cartCosts = new HashMap<>();
-
+    private static String[] previousMenu;
     public static HashMap<Integer, menu> menuHash = new HashMap<>();
-    public static boolean CUSTOMER_BACK_BUTTON = false;
+    private static boolean hasCustomerHitBack = false;
+    public static boolean isOrderFinished = false;
 
     public menu(String menuItem, Integer menuCost) {
         this.menuItem = menuItem;
         this.menuCost = menuCost;
     }
+    private menu() {
+    }
 
     public String getMenuItem() {
         return menuItem;
+    }
+    public static boolean isBack() {
+        return hasCustomerHitBack;
     }
 
     public Integer getMenuCost() {
@@ -34,20 +37,21 @@ public class menu {
     }
 
     public static void main(String[] args) {
-        //loadMenuOptions gets what menu categories area available in the restaurants folders and sets into Array.
+        //restMenuUpts gets what menu categories area available in the restaurants folders and sets into Array.
         //menuCats grabs the array and displays to user just cat. names and prompts to select, offering a back option.
-        String [] restMenuOpt = loadMenuOptions();
-
+        String[] restMenuOpt = loadMenuOptions();
         assert restMenuOpt != null;
         int catSelected = menuCats(restMenuOpt);
-
-        if (CUSTOMER_BACK_BUTTON) {
-            tummy_Rumblers.main(new String [0]);
-        }else {
-            loadCatItems(restMenuOpt[catSelected]);
-            printSubMenu();
-        }
-        }
+        do {
+            if (hasCustomerHitBack) {
+                tummy_Rumblers.main(new String[0]);
+            } else {
+                loadCatItems(restMenuOpt[catSelected]);
+                printSubMenu();
+                chooseItem();
+            }
+        } while (!isOrderFinished);
+    }
 
 
 
@@ -108,12 +112,17 @@ public class menu {
         } catch (FileNotFoundException ff) {}
     }
     public static int menuCats(String[] menuOptions){
+        previousMenu = menuOptions;
         Scanner selection = new Scanner(System.in);
         int menuChoice=0;
 
-                for(int i = 1; i <= menuOptions.length; i++) {
+                for(int i = 1; i <= menuOptions.length + 1; i++) {
                     if (i == menuOptions.length) {
-                        System.out.println("{" + i + "}" + "  " + "Return to Restaurant Selection.");
+                        System.out.println("{" + i + "}  Return to Restaurant Selection.");
+                        continue;
+                    } else if ( i == menuOptions.length+1){
+                        System.out.println();
+                        System.out.println("     You may also press {" + i + "} to complete your order");
                         break;
                     }
                     System.out.println("{" + i + "}" + "  " + menuOptions[i].replace(".txt", ""));
@@ -122,52 +131,87 @@ public class menu {
         System.out.print("Which section of the menu would you like to see: ");
         do {
             menuChoice = selection.nextInt();
-            CUSTOMER_BACK_BUTTON = false;
-            if (menuChoice > menuOptions.length || menuChoice <= 0) {
+            hasCustomerHitBack = false;
+            if (menuChoice > menuOptions.length+1 || menuChoice <= 0) {
                 System.out.println("Invalid selection, please try again.");
             }
-        }while (menuChoice > menuOptions.length || menuChoice <= 0);
+        }while (menuChoice > menuOptions.length+1 || menuChoice <= 0);
         //if they selected to return to menu, boot backwards into menu
         if (menuChoice == menuOptions.length) {
-            CUSTOMER_BACK_BUTTON = true;
+            hasCustomerHitBack = true;
+        }
+        if (menuChoice == menuOptions.length+1) {
+            isOrderFinished = true;
+            System.out.println("Havent completed checkout yet lol");
+            System.exit(0);
         }
         return menuChoice;
     }
 
-    public static void printSubMenu(){
+    public static void printSubMenu() {
 
-     for( int i =1; i <= menuHash.size(); i++){
-        //separated and named vars for readability & indenting
-        String getItems = menuHash.get(i).getMenuCost().toString();
-        //getting dollars and cents and separating to print.
-        String dollars = getItems.substring(0, getItems.length()-2);
-        String cents = getItems.substring(getItems.length()-2);
-        String totalCost = dollars + "." + cents;
+        for (int i = 1; i <= menuHash.size() + 1; i++) {
+            if (i < menuHash.size()) {
+                //separated and named vars for readability & indenting
+                String getItems = menuHash.get(i).getMenuCost().toString();
+                //getting dollars and cents and separating to print.
+                String dollars = getItems.substring(0, getItems.length() - 2);
+                String cents = getItems.substring(getItems.length() - 2);
+                String totalCost = dollars + "." + cents;
 
-        String item = menuHash.get(i).getMenuItem();
-        totalCost = tummy_Rumblers.indent.substring(0, tummy_Rumblers.indent.length() - totalCost.length() - item.length()) + totalCost;
-        System.out.println(item + totalCost);
-    }
-        Scanner selection = new Scanner(System.in);
-        System.out.println();
-        System.out.println("Please select items to add to your cart: ");
-        do {
-            int menuChoice = selection.nextInt();
-            if (menuChoice > menuHash.size() || menuChoice <= 0 ) {
-                System.out.println("Invalid selection, please try again.");
-
+                String item = menuHash.get(i).getMenuItem();
+                totalCost = tummy_Rumblers.indent.substring(0, tummy_Rumblers.indent.length() - totalCost.length() - item.length()) + totalCost;
+                System.out.println("{" + i + "} " + item + totalCost);
+                continue;
             }
 
-//            String busName = me.get(menuChoice);
-//            int tempCart = cartItems.get(name);
-//            int amount;
-//            if (cartItems.get(busName) == null){
-//                amount = 0;
-//            } else { amount = cartItems.get(busName);}
-//            cartItems.put(busName,amount + 1);
-//            cartCosts.put(busName,menuCosts.get(menuChoice));
-//            System.out.println(busName + " added to cart, you have " + tempCart + " in cart.");
-        } while (!CUSTOMER_BACK_BUTTON);
-}
-}
+            if (i == menuHash.size()) {
+                System.out.println("{" + i + "} Return to categories");
+                continue;
+            }
+            if (i == menuHash.size() + 1) {
+                System.out.println();
+                System.out.println("     You may also press {" + i + "} to complete your order");
+                continue;
+            }
+        }
+    }
+
+     public static void chooseItem() {
+        Scanner selection = new Scanner(System.in);
+        System.out.print("");
+        System.out.print("     Please select an item to add to your cart: ");
+
+        do {
+            int menuChoice = selection.nextInt();
+            if (menuChoice == menuHash.size()+1){
+                isOrderFinished = true;
+            }
+            if (menuChoice == menuHash.size()){
+                main(tummy_Rumblers.nope);
+            }
+            if (menuChoice > menuHash.size()+1 || menuChoice <= 0 ) {
+                System.out.println("Invalid selection, please try again.");
+                continue;
+            }
+            if(!isOrderFinished) {
+                System.out.println();
+                System.out.println("     ~~~~~ Added " + menuHash.get(menuChoice).getMenuItem() + " to cart. ~~~~~");
+                ShoppingCart.addToCart(menuHash.get(menuChoice));
+                ShoppingCart.totalOfCart();
+                System.out.println();
+
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+
+                break;
+            }
+        } while (!isOrderFinished);
+        }
+    }
+
+
 

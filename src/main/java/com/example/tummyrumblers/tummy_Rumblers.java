@@ -1,13 +1,10 @@
 package com.example.tummyrumblers;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class tummy_Rumblers {
-    static boolean loggedIn = true;
+    //default for loggedIn is False, set to true if working on app for debugging
+    private static boolean loggedIn = true;
     static String banner = "********************************************************";
     static String indent = "                                                  ";
     static String[] nope = new String[0];
@@ -28,7 +25,7 @@ public class tummy_Rumblers {
             Businesses.main(nope);
         } catch (FileNotFoundException ff) {
         }
-        if (!menu.CUSTOMER_BACK_BUTTON) {
+        if (!menu.isBack()) {
             System.out.println("********************************************************");
             System.out.println("**  Please wait while we load menu's and restaurants  **");
             System.out.println("********************************************************");
@@ -47,27 +44,19 @@ public class tummy_Rumblers {
         System.out.println("The following available for delivery and their food type");
         System.out.println(" ");
         //Setting equal to size but equal to size, loop remains the same.
-        for (int i = 1; i <= Businesses.businessesMapDB.size(); i++) {
-            String busName = Businesses.businessesMapDB.get(i).getNameBus();
-            String busType = Businesses.businessesMapDB.get(i).getTypeOfBus();
+        for (int i = 1; i <= Businesses.businessesMapDB.size()+1; i++) {
+            if (i <= Businesses.businessesMapDB.size()) {
+                String busName = Businesses.businessesMapDB.get(i).getNameBus();
+                String busType = Businesses.businessesMapDB.get(i).getTypeOfBus();
 
-            //indenting busType to end of window
-            busType = indent.substring(0, indent.length() - busType.length() - busName.length()) + busType;
+                //indenting busType to end of window
+                busType = indent.substring(0, indent.length() - busType.length() - busName.length()) + busType;
 
-            System.out.println("{" + i + "}   " + busName + busType);
+                System.out.println("{" + i + "}   " + busName + busType);
+            } else {
+                System.out.println();
+                System.out.println("     You may also press {" + i + "} to complete your order");
+            }
         }
     }
 }
-//    public static void listMenu(){
-//        for(int i = 1; i < menu.menuItems.size(); i++){
-//            String menuItem = menu.menuItems.get(i);
-//            int price = menu.menuCosts.get(i);
-//
-////            String[] countSpace = price.toString().split("\\.");
-////            int cS = countSpace[0].length() + countSpace[1].length();
-//
-//            String newPrice = indent.substring(0,indent.length() - price.toString().length() - menuItem.length()) + price;
-//            System.out.println("{" + i + "}  " + menuItem + newPrice + "$" );
-//        }
-//    }
-//}

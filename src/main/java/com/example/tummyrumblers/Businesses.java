@@ -23,12 +23,7 @@ public class Businesses {
     }
 
     private Businesses() {
-
     }
-//   public static HashMap<Integer,String> nameBus = new HashMap<>();
-//   public static HashMap<Integer,String> phoneBus = new HashMap<>();
-//   public static HashMap<Integer,String> addyBus = new HashMap<>();
-//   public static HashMap<Integer,String> typeOfBus = new HashMap<>();
 
     public String getNameBus() {
         return nameBus;
