@@ -4,13 +4,47 @@ package com.example.tummyrumblers;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
+
 public class Businesses {
-   public static HashMap<Integer,String> nameBus = new HashMap<>();
-   public static HashMap<Integer,String> phoneBus = new HashMap<>();
-   public static HashMap<Integer,String> addyBus = new HashMap<>();
-   public static HashMap<Integer,String> typeOfBus = new HashMap<>();
+    String nameBus;
+    String phoneBus;
+    String addyBus;
+    String typeOfBus;
+    static Map<Integer, Businesses> businessesMapDB = new HashMap<>();
+
+    public Businesses(String nameBus, String phoneBus, String addyBus, String typeOfBus) {
+        this.nameBus = nameBus;
+        this.phoneBus = phoneBus;
+        this.addyBus = addyBus;
+        this.typeOfBus = typeOfBus;
+    }
+
+    private Businesses() {
+
+    }
+//   public static HashMap<Integer,String> nameBus = new HashMap<>();
+//   public static HashMap<Integer,String> phoneBus = new HashMap<>();
+//   public static HashMap<Integer,String> addyBus = new HashMap<>();
+//   public static HashMap<Integer,String> typeOfBus = new HashMap<>();
+
+    public String getNameBus() {
+        return nameBus;
+    }
+
+    public String getPhoneBus() {
+        return phoneBus;
+    }
+
+    public String getAddyBus() {
+        return addyBus;
+    }
+
+    public String getTypeOfBus() {
+        return typeOfBus;
+    }
 
     public static void main(String[] args) throws FileNotFoundException {
         //locations in file for each
@@ -32,11 +66,7 @@ public class Businesses {
             //safety check to prevent empty strings
             if ( restNum > 2 && readingText[0].equals(""))
                 break;
-
-            nameBus.put(restNum,readingText[businessNameLoc]);
-            addyBus.put(restNum,readingText[businessAddLoc]);
-            phoneBus.put(restNum,readingText[businessPhoneLoc]);
-            typeOfBus.put(restNum,readingText[businessTypeLoc]);
+            businessesMapDB.put(restNum,new Businesses(readingText[businessNameLoc],readingText[businessPhoneLoc],readingText[businessAddLoc],readingText[businessTypeLoc]));
             restNum++;
         }
     }

@@ -47,9 +47,9 @@ public class tummy_Rumblers {
         System.out.println("The following available for delivery and their food type");
         System.out.println(" ");
         //Setting equal to size but equal to size, loop remains the same.
-        for (int i = 1; i <= Businesses.nameBus.size(); i++) {
-            String busName = Businesses.nameBus.get(i);
-            String busType = Businesses.typeOfBus.get(i);
+        for (int i = 1; i <= Businesses.businessesMapDB.size(); i++) {
+            String busName = Businesses.businessesMapDB.get(i).getNameBus();
+            String busType = Businesses.businessesMapDB.get(i).getTypeOfBus();
 
             //indenting busType to end of window
             busType = indent.substring(0, indent.length() - busType.length() - busName.length()) + busType;

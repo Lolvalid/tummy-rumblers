@@ -20,7 +20,7 @@ public class customerChoices {
         }
         try {
             restaurantSelected = Integer.valueOf(choice.nextLine());
-            if (!(restaurantSelected > 0 && restaurantSelected <= Businesses.nameBus.size())){
+            if (!(restaurantSelected > 0 && restaurantSelected <= Businesses.businessesMapDB.size())){
                 System.out.println("Please enter a valid Restaurant");
                 selectRestaurant();
                 count++;
